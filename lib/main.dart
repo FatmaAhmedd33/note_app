@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'views/note_page.dart';
 
 void main() {
-  runApp( const NoteApp());
+  runApp(const NoteApp());
 }
 
 class NoteApp extends StatelessWidget {
@@ -11,11 +11,10 @@ class NoteApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(brightness: Brightness.dark),
-      home:  const NotePage(),
+      theme: ThemeData(brightness: Brightness.dark, fontFamily: 'Poppins'),
+      home: const NotePage(),
     );
   }
 }
-  
