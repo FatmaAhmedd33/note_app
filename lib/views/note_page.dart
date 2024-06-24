@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:note_app/constants.dart';
 
 import '../widgets/add_note_buttom_sheet.dart';
 import '../widgets/notes_view_body.dart';
@@ -14,7 +15,7 @@ class NotePage extends StatelessWidget {
       floatingActionButton: IconButton(
           iconSize: 30,
           style: const ButtonStyle(
-              backgroundColor: MaterialStatePropertyAll(Colors.blueAccent)),
+              backgroundColor: MaterialStatePropertyAll(kPrimaryColor)),
           onPressed: () {
             showModalBottomSheet(
                 // any change in showModalBottomSheet to appear untill close it and open again cause has now build method here
