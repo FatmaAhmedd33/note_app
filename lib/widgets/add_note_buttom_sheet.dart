@@ -12,25 +12,65 @@ class AddNoteButtomSheet extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       margin: const EdgeInsets.all(16),
       child: const SingleChildScrollView(
-        child: Column(
-          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            CustomeTextField(
-              text: 'Title',
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            CustomeTextField(
-              maxlines: 5,
-              text: 'content',
-            ),
-            SizedBox(
-              height: 100,
-            ),
-            CustomButton()
-          ],
-        ),
+        child: AddNoteForm(),
+      ),
+    );
+  }
+}
+
+class AddNoteForm extends StatefulWidget {
+  const AddNoteForm({
+    super.key,
+  });
+
+  @override
+  State<AddNoteForm> createState() => _AddNoteFormState();
+}
+
+class _AddNoteFormState extends State<AddNoteForm> {
+  final GlobalKey<FormState> formKey = GlobalKey();
+   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+  String? title, subtitle;
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: formKey,
+      autovalidateMode: autovalidateMode,
+      child: Column(
+        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          CustomeTextField(
+            onsaved: (value) {
+              title = value;
+            },
+            text: 'Title',
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          CustomeTextField(
+            onsaved: (value) {
+              subtitle = value;
+            },
+            maxlines: 5,
+            text: 'content',
+          ),
+          const SizedBox(
+            height: 100,
+          ),
+          CustomButton(
+            ontap: () {
+              if (formKey.currentState!.validate()) {
+                formKey.currentState!.save();
+              } else {
+                autovalidateMode = AutovalidateMode.always;
+                setState(() {
+                  
+                });
+              }
+            },
+          )
+        ],
       ),
     );
   }
